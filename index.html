@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neemias Gomes — Portfólio</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+    }
+
+    body {
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* ---------- PARTICULAS / LOGOS FLUTUANDO ---------- */
+    .floating-container {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .float-item {
+      position: absolute;
+      width: 45px;
+      opacity: 0.16;
+      animation: float 12s infinite linear;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(120vh) rotate(0deg);
+      }
+      100% {
+        transform: translateY(-20vh) rotate(360deg);
+      }
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #ff2b2b;
+      border-radius: 50%;
+      opacity: 0.5;
+      animation: particleFloat 6s infinite ease-in-out;
+    }
+
+    @keyframes particleFloat {
+      0% {
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        transform: translateY(-30px) scale(1.5);
+      }
+      100% {
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 8%;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      z-index: 10;
+    }
+
+    header nav a {
+      margin-left: 25px;
+      font-size: 1rem;
+      text-decoration: none;
+      color: #fff;
+      transition: 0.2s;
+    }
+
+    header nav a:hover {
+      color: #ff3838;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      margin-top: 140px;
+      padding: 0 8%;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      max-width: 500px;
+      color: #ff3131;
+      font-weight: 800;
+    }
+
+    .hero-text p {
+      margin-top: 10px;
+      opacity: 0.8;
+      max-width: 460px;
+    }
+
+    .hero-buttons {
+      margin-top: 25px;
+      display: flex;
+      gap: 15px;
+    }
+
+    .btn {
+      padding: 12px 22px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .btn-red {
+      background: #ff2b2b;
+      color: #fff;
+    }
+
+    .btn-dark {
+      background: #111;
+      color: #fff;
+      border: 1px solid #333;
+    }
+
+    /* ---------- PROJETOS ---------- */
+    .section {
+      margin-top: 120px;
+      padding: 0 8%;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #ff2b2b;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .project-card {
+      background: rgba(20, 20, 20, 0.85);
+      padding: 18px;
+      border-radius: 14px;
+      transition: 0.3s;
+      text-decoration: none;
+      color: white;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    /* ---------- CONTATO ---------- */
+    .contact-grid {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      background: #111;
+      color: #fff;
+    }
+
+    textarea {
+      height: 140px;
+    }
+
+    .send-btn {
+      background: #ff2b2b;
+      margin-top: 10px;
+      width: 100%;
+      border: none;
+      color: #fff;
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: 700;
+    }
+
+    @media(max-width: 760px) {
+      .hero-text h1 {
+        font-size: 2.3rem;
+      }
+
+      header nav a {
+        margin-left: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="floating-container" id="float-area"></div>
+
+  <header>
+    <h2>Neemias Gomes</h2>
+    <nav>
+      <a href="#projetos">Projetos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Crio sites modernos, rápidos e com personalidade.</h1>
+      <p>Sou Neemias Gomes, desenvolvedor front-end. Foco em UI elegante, performance e responsividade.</p>
+
+      <div class="hero-buttons">
+        <a href="#projetos" class="btn btn-red" style="text-decoration:none; display:inline-block;">Ver Projetos</a>
+        <a href="https://github.com/neemiasgomes007-crypto" target="_blank" class="btn btn-dark"
+          style="text-decoration:none; display:inline-block;">
+          <i class="fab fa-github" style="margin-right:8px;"></i>GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROJETOS ===================== -->
+  <section class="section" id="projetos">
+    <h2>Meus Projetos</h2>
+
+    <div class="projects-grid">
+
+      <a href="https://neemiasgomes007-crypto.github.io/starbuckneemias/" target="_blank" class="project-card">
+        <img src="img/Starbucks coffee Social Media Designs.jpg" />
+        <h3>Starbucks Website</h3>
+        <p>Replica moderna baseada no layout original.</p>
+      </a>
+
+      <a href="https://neemiasgomes007-crypto.github.io/cafedogeremias/" target="_blank" class="project-card">
+        <img src="img/cafe.jpg" />
+        <h3>Café do Neemias</h3>
+        <p>E-commerce conceitual elegante e otimizado.</p>
+      </a>
+
+      <a href="https://neemiasgomes007-crypto.github.io/basquete/" target="_blank" class="project-card">
+        <img src="img/Michael Jordan y Lebron James.jpg" />
+        <h3>Site de Basquete</h3>
+        <p>Projeto interativo usando animações JS.</p>
+      </a>
+
+      <a href="https://rose-lime-seven.vercel.app/" target="_blank" class="project-card">
+        <img src="img/DESIGNER DE SOBRANCELHA DE SUCESSO.jpg" />
+        <h3>Designer de Sobrancelha</h3>
+        <p>Projeto real hospedado na Vercel.</p>
+      </a>
+
+      <a href="https://neemiasgomes007-crypto.github.io/barbertop-celular/" target="_blank" class="project-card">
+        <img src="img/Curso de Barbeiro Profissional.jpg" />
+        <h3>Barbearia</h3>
+        <p>Layout moderno e mobile-first.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ===================== SOBRE MIM ===================== -->
+  <section class="section" id="sobre">
+    <h2>Sobre Mim</h2>
+    <p>
+      Olá! Meu nome é Neemias, sou Desenvolvedor Front-End e Designer, focado em transformar ideias em interfaces modernas,
+      rápidas e visualmente impactantes. Trabalho criando sites profissionais, sistemas responsivos e experiências digitais
+      que realmente funcionam e geram resultado.
+      <br><br>
+      Desenvolvo projetos utilizando HTML, CSS, JavaScript, React, Tailwind e ferramentas de UI/UX, unindo design e
+      programação para entregar soluções completas — desde o visual até a parte funcional.
+      <br><br>
+      Gosto de criar interfaces limpas, intuitivas e com uma identidade visual forte. Meu foco é sempre entregar algo
+      profissional, moderno e que cause a melhor impressão possível.
+      <br><br>
+      Também trabalho com criação de artes, banners, identidades visuais e otimização de páginas para empresas, lojas e
+      profissionais — sempre buscando qualidade e alto padrão.
+      <br><br>
+      Se você está procurando alguém criativo, comprometido e que entrega com qualidade, estou sempre pronto para projetos
+      e novos desafios.
+    </p>
+  </section>
+
+  <!-- ===================== CONTATO ===================== -->
+  <section class="section" id="contato">
+    <h2>Contato</h2>
+
+    <div style="margin-top:20px; display:flex; justify-content:center; gap:40px; font-size:2.8rem;">
+      <a href="https://www.instagram.com/neemias_dev/" target="_blank"
+        style="color:white; text-decoration:none;"><i class="fa-brands fa-instagram"></i></a>
+
+      <a href="https://github.com/neemiasgomes007-crypto" target="_blank"
+        style="color:white; text-decoration:none;"><i class="fa-brands fa-github"></i></a>
+
+      <a href="https://wa.me/5511968578672" target="_blank"
+        style="color:white; text-decoration:none;"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+
+    <div class="contact-grid" style="margin-top:40px;">
+      <div>
+        <h3>Contato direto</h3>
+        <p>WhatsApp: +55 11 96857-8672</p>
+        <p>Instagram: @neemias_dev</p>
+      </div>
+
+      <form>
+        <input placeholder="Nome" />
+        <input placeholder="Email" />
+        <textarea placeholder="Mensagem"></textarea>
+        <button class="send-btn">Enviar mensagem</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    const floatArea = document.getElementById("float-area");
+    const logos = [
+      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+    ];
+
+    for (let i = 0; i < 18; i++) {
+      const img = document.createElement("img");
+      img.src = logos[Math.floor(Math.random() * logos.length)];
+      img.className = "float-item";
+      img.style.left = Math.random() * 100 + "%";
+      img.style.animationDuration = 8 + Math.random() * 10 + "s";
+      floatArea.appendChild(img);
+    }
+
+    for (let i = 0; i < 45; i++) {
+      const p = document.createElement("div");
+      p.className = "particle";
+      p.style.left = Math.random() * 100 + "%";
+      p.style.top = Math.random() * 100 + "%";
+      floatArea.appendChild(p);
+    }
+  </script>
+
+</body>
+
+</html>
